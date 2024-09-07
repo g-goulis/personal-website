@@ -15,11 +15,14 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
-        "accent-1": "#FAFAFA",
-        "accent-2": "#EAEAEA",
-        "accent-7": "#333",
-        success: "#0070f3",
-        cyan: "#79FFE1",
+        "background": "#FFFFFF",
+        "text": "#000000",
+        "accent-a": "#9da2ab",
+        "accent-b": "#dae2df",
+        "accent-c": "#E7F5A3"
+      },
+      fontFamily: {
+        montserrat: ['Montserrat']
       },
       spacing: {
         28: "7rem",

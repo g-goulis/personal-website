@@ -2,8 +2,14 @@ type Props = {
   children?: React.ReactNode;
 };
 
+/**
+ * The main container for the page
+ *
+ * @param children
+ * @constructor
+ */
 const Container = ({ children }: Props) => {
-  return <div className="container mx-auto px-5">{children}</div>;
+  return <div className="container mx-20">{children}</div>;
 };
 
 export default Container;
