@@ -1,15 +1,19 @@
 import Link from 'next/link';
+import ScienceIcon from "@mui/icons-material/Science";
 
 type Props = {
     href: string;
-    title: string;
+    title?: string;
+    hoverColor: string;
+    children: React.ReactNode;
 };
 
-export function NavbarItem({href, title}: Props) {
+export function NavbarItem({href, title, hoverColor, children}: Props) {
     return (
         <div>
-            <Link href={href} className="text-white hover:bg-white hover:text-accent-a block px-3 py-2 rounded-md text-base font-medium">
-                {title}
+            <Link href={href} className={`text-gray-500 font-semibold hover:${hoverColor}`}>
+                {children}
+                {title ? <span className="align-middle">{title}</span> : null}
             </Link>
         </div>
     );
