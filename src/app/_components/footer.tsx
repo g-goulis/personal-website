@@ -1,5 +1,4 @@
-import Container from "@/app/_components/container";
-import { Box, Typography, IconButton, Link } from '@mui/material';
+import {IconButton, Link } from '@mui/material';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 

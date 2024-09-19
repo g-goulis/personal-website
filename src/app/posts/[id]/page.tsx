@@ -1,4 +1,3 @@
-import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import {getPostByID} from "@/lib/api";
 import markdownToHtml from "@/lib/markdownToHtml";
