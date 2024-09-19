@@ -15,11 +15,15 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
-        "background": "#FFFFFF",
-        "text": "#000000",
+        "background": "#ffffff",
         "accent-a": "#9da2ab",
         "accent-b": "#dae2df",
-        "accent-c": "#E7F5A3"
+        "accent-c": "#E7F5A3",
+        "primary": "#a991f7",
+        "secondary": "#f6d860",
+        "accent": "#37cdbe",
+        "neutral": "#3d4451",
+        "base-100": "#ffffff"
       },
       fontFamily: {
         montserrat: ['Montserrat']
@@ -42,6 +46,11 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
-};
+  plugins: [
+      require('daisyui'),
+  ],
+  daisyui: {
+    themes: false
+  }
+  };
 export default config;

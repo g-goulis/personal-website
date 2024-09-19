@@ -16,158 +16,125 @@ import { FaQuoteRight } from "react-icons/fa";
 export default function Index() {
 
   return (
-      <div className={"flex flex-col max-w-6xl mx-auto"}>
-        <div className={"text-center"}>
-          <p className={"text-5xl"}>
+
+      <div className="flex flex-col max-w-6xl mx-auto space-y-10 py-10 text-black">
+        <div className="text-center space-y-4">
+          <p className="text-5xl font-semibold">
             A passionate software engineer with a strong foundation in web applications, backend infrastructure, and
             microservice architecture.
           </p>
-          <br/>
-          <p className={""}>
-            <FaQuoteLeft className={"inline text-wrap align-top "}/>
+          <p className="text-xl italic text-gray-600  mx-auto">
+            <FaQuoteLeft className="inline  align-top text-gray-500"/>
             &nbsp;&nbsp;
-            <strong>We are what we repeatedly do. Excellence, then, is not an act but a habit.</strong> (Aristotle)
+            <strong>We are what we repeatedly do. Excellence, then, is not an act but a habit.</strong>
             &nbsp;
-            <FaQuoteRight className={"inline text-wrap align-top"}/>
+            <FaQuoteRight className="inline  align-top text-gray-500"/>
           </p>
         </div>
 
-
         {/* Bio Section */}
-        <div className={"text-center p-3"}>
-          <p className={"text-2xl font-medium text-nowrap"}>
-            Who I Am?
-          </p>
-          <p className={"text-1xl"}>
+        <div className="text-center space-y-4 px-4">
+          <p className="text-3xl font-medium">Who I Am</p>
+          <p className="text-lg  mx-auto text-gray-600">
             Hello! I’m Gabriel Goulis, a recent Computer Science graduate looking to expand knowledge through research,
-            graduate schooling and industry experience.
-            My passions include software engineering, game development, cloud architecture and competitive programming.
+            graduate schooling, and industry experience. My passions include software engineering, game development,
+            cloud architecture, and competitive programming.
           </p>
         </div>
 
         {/* Strengths Section */}
+        <div className="text-center space-y-6">
+          <p className="text-3xl font-medium">My Strengths</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="shadow-lg rounded-lg p-6 space-y-3">
+              <p className="font-bold text-xl">Microservice Architecture</p>
+              <p className="text-gray-600 text-sm">
+                Deep understanding of managing microservice applications using Spring Boot. Developed multiple tools
+                and engaged in academic papers over MSA.
+              </p>
+              <div className="flex justify-center space-x-4 pt-3">
+                <SiSpringboot size="28"/>
+                <SiDocker size="28"/>
+                <SiApachekafka size="28"/>
+              </div>
+            </div>
 
-        <p className={"p-3 text-2xl font-medium text-nowrap text-center"}>
-          My Strengths
-        </p>
-        <div className={"flex flex-row gap-5 justify-center"}>
-          <div className={"flex-1 flex-col shadow-md rounded-lg"}>
-            <div className={"font-bold font-medium text-xl p-2"}>
-              Microservice Architecture
+            <div className="shadow-lg rounded-lg p-6 space-y-3">
+              <p className="font-bold text-xl">Backend Development</p>
+              <p className="text-gray-600 text-sm">
+                Extensive experience working with REST APIs, managing the flow of data between backend systems,
+                and managing server-side web logic.
+              </p>
+              <div className="flex justify-center space-x-4 pt-3">
+                <SiNodedotjs size="28"/>
+                <SiMysql size="35"/>
+                <SiElasticsearch size="28"/>
+                <SiRabbitmq size="28"/>
+                <SiPhp size="28"/>
+              </div>
             </div>
-            <div className={"text-sm px-2"}>
-              Deep understanding of managing microservice applications using Spring Boot, developed multiple tools
-              and engaged in academic papers over MSA.
-            </div>
-            <div className="flex justify-center pt-3 gap-2">
-              <SiSpringboot size="28"/>
-              <SiDocker size="28"/>
-              <SiApachekafka size="28"/>
-            </div>
-          </div>
 
-          <div className={"flex-1 flex-col shadow-md rounded-lg"}>
-            <div className={"font-bold font-medium text-xl p-2"}>
-              Backend Development
-            </div>
-            <div className={"text-sm px-2"}>
-              Extensive experience working with REST API's, managing the flow of data between backend applications
-              or systems and managing server side web logic.
-            </div>
-            <div className="flex justify-center pt-3 gap-2">
-              <SiNodedotjs size="28"/>
-              <SiMysql size="35"/>
-              <SiElasticsearch size="28"/>
-              <SiRabbitmq size="28"/>
-              <SiPhp size="28"/>
-            </div>
-          </div>
-
-          <div className={"flex-1 flex-col shadow-md rounded-lg"}>
-            <div className={"font-bold font-medium text-xl p-2"}>
-              Frontend Development
-            </div>
-            <div className={"text-sm px-2"}>
-              Developed realtime applications using web sockets and extended site functionality using Javascript
-              and PHP both specializing in building out customer statistics and dashboards.
-            </div>
-            <div className="flex justify-center pt-3 gap-2">
-              <RiJavascriptFill size="28"/>
-              <SiTypescript size="28"/>
-              <SiReact size="28"/>
-              <SiTailwindcss size="28"/>
+            <div className="shadow-lg rounded-lg p-6 space-y-3">
+              <p className="font-bold text-xl">Frontend Development</p>
+              <p className="text-gray-600 text-sm">
+                Developed real-time applications using web sockets and extended functionality with JavaScript
+                and PHP, specializing in customer statistics and dashboards.
+              </p>
+              <div className="flex justify-center space-x-4 pt-3">
+                <RiJavascriptFill size="28"/>
+                <SiTypescript size="28"/>
+                <SiReact size="28"/>
+                <SiTailwindcss size="28"/>
+              </div>
             </div>
           </div>
         </div>
-
 
         {/* Learning Sections */}
-        <div className={"flex flex-row gap-5 justify-center pt-5"}>
-
-          <div className={"flex-1"}>
-            <p className={"p-3 text-2xl text-nowrap text-center font-medium"}>What I am Learning</p>
-            <div className={"flex flex-col h-full shadow-md rounded-lg"}>
-              <div className={"text-xl font-medium p-2"}>
-                Academic Research
-              </div>
-              <div className={"text-sm px-2"}>
-                I am constantly exposed to academic literature in the field of Computer Science. I am in the process of
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-6">
+            <p className="text-3xl font-medium text-center">What I Am Learning</p>
+            <div className="shadow-lg rounded-lg p-6 space-y-3">
+              <div className="text-xl font-bold">Academic Research</div>
+              <p className="text-gray-600 text-sm">
+                Constant exposure to academic literature in the field of Computer Science. Currently in the process of
                 writing multiple publications related to Microservice Architecture.
-              </div>
-              <div className={"text-xl font-medium p-2"}>
-                Cloud Infrastructure
-              </div>
-              <div className={"text-sm px-2"}>
-                Deployment of distributed architecture solutions is important to understand as it has become the
-                industry standard for MSA systems.
-              </div>
-              <div className={"text-xl font-medium p-2"}>
-                Scalability
-              </div>
-              <div className={"text-sm px-2"}>
-                Learning how to structure MSA systems for scalability and leveraging appropriate cloud based solutions
-                helps create a better understanding of MSA overall.
-              </div>
+              </p>
+
+              <div className="text-xl font-bold">Cloud Infrastructure</div>
+              <p className="text-gray-600 text-sm">
+                Deployment of distributed architecture solutions is key to understanding industry standards for MSA
+                systems.
+              </p>
+
+              <div className="text-xl font-bold">Scalability</div>
+              <p className="text-gray-600 text-sm">
+                Learning how to structure MSA systems for scalability by leveraging appropriate cloud-based solutions.
+              </p>
             </div>
           </div>
 
-          <div className={"flex-1"}>
-            <p className={"p-3 text-2xl text-nowrap text-center font-medium"}>What I plan on Learning</p>
-            <div className={"flex flex-col h-full shadow-md rounded-lg"}>
-              <div className={"text-xl font-medium p-2"}>
-                Cybersecurity
-              </div>
-              <div className={"text-sm px-2"}>
-                I want to learn about the challenges of approaching security for Distributed Systems and how scaling
-                these solutions is done.
-              </div>
-              <div className={"text-xl font-medium p-2"}>
-                New Languages and Technologies
-              </div>
-              <div className={"text-sm px-2"}>
-                A few languages I intend on picking up on include Rust and Kotlin. Additionally, I would also like to
-                learn more about Kubernetes and Apache products such as Hadoop and Spark.
-              </div>
-              <div className={"text-xl font-medium p-2"}>
-                AI and ML
-              </div>
-              <div className={"text-sm px-2"}>
-                In general I would like to gather a more general understanding of the underlying concepts in AI/ML based
-                solutions.
-              </div>
+          <div className="space-y-6">
+            <p className="text-3xl font-medium text-center">What I Plan on Learning</p>
+            <div className="shadow-lg rounded-lg p-6 space-y-3">
+              <div className="text-xl font-bold">Cybersecurity</div>
+              <p className="text-gray-600 text-sm">
+                Learning about the challenges of securing Distributed Systems and how to scale security solutions.
+              </p>
+
+              <div className="text-xl font-bold">New Languages and Technologies</div>
+              <p className="text-gray-600 text-sm">
+                Exploring Rust and Kotlin, while also learning more about Kubernetes, Hadoop, and Spark.
+              </p>
+
+              <div className="text-xl font-bold">AI and ML</div>
+              <p className="text-gray-600 text-sm">
+                Gaining a deeper understanding of the underlying concepts in AI/ML-based solutions.
+              </p>
             </div>
           </div>
         </div>
-
-        {/*<div className={"flex flex-row justify-center p-20"}>*/}
-        {/*  <a href={"/public/assets/Gabriel_Goulis_Resume.pdf"} download={"Gabriel_Goulis_Resume.pdf"} target={"_blank"}>*/}
-        {/*    <button className="bg-green-400 text-white py-2 px-4 rounded">*/}
-        {/*      Download My Resume*/}
-        {/*    </button>*/}
-        {/*  </a>*/}
-        {/*</div>*/}
-
-
       </div>
+
   );
 }

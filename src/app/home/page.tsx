@@ -4,10 +4,8 @@ import { Intro } from "@/app/_components/intro";
 export default function Index() {
 
   return (
-    <main>
       <Container>
         <Intro />
       </Container>
-    </main>
   );
 }
