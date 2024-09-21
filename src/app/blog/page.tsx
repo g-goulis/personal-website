@@ -10,7 +10,7 @@ export default function Index() {
               <div className="relative ">
                   <Banner imageURL={"assets/banner.webp"}/>
                   <div className="absolute inset-0 flex flex-col justify-center items-start text-center pl-8">
-                      <h1 className="text-black text-3xl md:text-5xl font-bold mb-4">
+                      <h1 className="text-black text-6xl font-bold mb-4">
                           My Blog
                       </h1>
                       <p className="text-black text-lg md:text-xl mb-6">

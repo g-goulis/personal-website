@@ -53,7 +53,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#000" />
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       </head>
-      <body className="flex flex-col min-h-screen bg-background text-text font-montserrat">
+      <body className="flex flex-col min-h-screen bg-background text-black font-montserrat">
         <Header />
         <div className="flex-grow pb-20">{children}</div>
         <Footer />

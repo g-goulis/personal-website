@@ -15,15 +15,12 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
-        "background": "#ffffff",
-        "accent-a": "#9da2ab",
-        "accent-b": "#dae2df",
-        "accent-c": "#E7F5A3",
-        "primary": "#a991f7",
-        "secondary": "#f6d860",
-        "accent": "#37cdbe",
-        "neutral": "#3d4451",
-        "base-100": "#ffffff"
+        "primary": "#D8B4A0",
+        "secondary": "#F3E9DC",
+        "accent": "#C08552",
+        "neutral": "#C6D8AF",
+        "background": "#eff1f3",
+        "gray-250": "#DBDEE3"
       },
       fontFamily: {
         montserrat: ['Montserrat']
@@ -50,7 +47,15 @@ const config: Config = {
       require('daisyui'),
   ],
   daisyui: {
-    themes: false
-  }
+    themes: [{
+      light: {
+        "primary": "#DBDEE3",
+        "secondary": "#F3E9DC",
+        "accent": "#C08552",
+        "neutral": "#DBDEE3",
+        "base-100": "#eff1f3",
+      }
+    }],
+  },
   };
 export default config;

@@ -4,8 +4,6 @@ import { Intro } from "@/app/_components/intro";
 export default function Index() {
 
   return (
-      <Container>
-        <Intro />
-      </Container>
+      <h1>404 - Page Not Found</h1>
   );
 }
