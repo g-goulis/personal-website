@@ -20,7 +20,8 @@ const config: Config = {
         "accent": "#C08552",
         "neutral": "#C6D8AF",
         "background": "#eff1f3",
-        "gray-250": "#DBDEE3"
+        "gray-250": "#DBDEE3",
+        "brown": "#A0522D"
       },
       fontFamily: {
         montserrat: ['Montserrat']
