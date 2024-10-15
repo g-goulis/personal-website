@@ -4,51 +4,41 @@ import { Event } from "@/interfaces/Event";
 
 interface Props {
     event: Event;
-    // imgSrc: string;  // New prop for the circle image
 }
 
 const TimelineEvent = ({ event }: Props) => {
-    const [isOpen, setIsOpen] = useState(false);
-
-    const toggleDropdown = () => {
-        setIsOpen(!isOpen);
-    };
 
     return (
-        <div className="bg-white shadow-md p-6 rounded-lg my-6 max-w-lg mx-auto">
-            <div className="flex items-center mb-2">
-                {/* Circle Image */}
-                <img
-                    src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNMb_B_ZnF1BbygzcEuv5qW_ErX8fgZfNXRg&s"}
-                    alt="event image"
-                    className="w-12 h-12 rounded-full mr-4"
-                />
+        <div
+            className={`relative border border-gray-300 p-4 rounded-lg my-4 max-w-5xl mx-auto shadow-sm hover:shadow-lg transition-shadow duration-200`}
+        >
+            <div className="flex items-start">
 
-                {/* Date and Title */}
-                <div className="flex-grow">
-                    <div className="flex justify-between items-center text-sm text-gray-500">
-                        <span>{event.startDate}</span>
-                        <span>→</span>
-                        <span>{event.endDate}</span>
+                <div className="flex-grow flex flex-col">
+                    <div className="flex flex-row pb-2">
+                        <img
+                            src={event.imgSrc}
+                            alt="event image"
+                            className="w-20 h-20 rounded-lg mr-4 border"
+                        />
+                        <h3 className="text-2xl font-semibold text-gray-800 mb-2">{event.title}</h3>
                     </div>
-                    <h3 className="text-xl font-bold text-blue-600 mb-2">{event.title}</h3>
+
+                    <p className="text-gray-700 mt-1 leading-relaxed">{event.description}</p>
+
+
+                    {event.bullets.length > 0 &&
+                    <div className="mt-3">
+                        <h4 className="text-lg font-medium text-gray-700 mb-1">Key Points:</h4>
+                        <ul className="list-disc list-inside text-gray-600">
+                            {event.bullets.map(bullet => (<li>{bullet}</li>))}
+                        </ul>
+                    </div>
+                    }
                 </div>
-
-                {/* Toggle Button */}
-                <button
-                    onClick={toggleDropdown}
-                    className="text-blue-600 underline focus:outline-none"
-                >
-                    {isOpen ? 'Hide' : 'Show More'}
-                </button>
             </div>
-
-            {/* Conditionally render the description */}
-            {isOpen && (
-                <p className="text-gray-700 mt-2 leading-relaxed">{event.description}</p>
-            )}
         </div>
-    );
+);
 };
 
 export default TimelineEvent;

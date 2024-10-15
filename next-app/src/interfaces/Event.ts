@@ -4,4 +4,6 @@ export type Event = {
     title: string
     description: string
     type: string
+    bullets: Array<string>
+    imgSrc: string
 };

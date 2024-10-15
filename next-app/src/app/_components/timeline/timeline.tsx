@@ -10,15 +10,13 @@ interface Props {
 }
 
 const Timeline = ({ events }: Props) => {
-    const [visibleEvents, setVisibleEvents] = useState<{ [key: number]: boolean }>({}); // Keep track of visible events
-    const timelineRef = useRef<HTMLDivElement>(null);
 
     // Calculate spacing between events based on date difference
     const getEventSpacing = (startDate: string, nextStartDate: string) => {
         const start = dayjs(startDate);
         const next = dayjs(nextStartDate);
-        const diffInDays = next.diff(start, 'day');
-        return diffInDays > 0 ? `${diffInDays * 2}px` : '20px'; // Multiply to emphasize time difference visually
+        const diffInDays = next.diff(start, 'month');
+        return diffInDays > 0 ? `${diffInDays * 6}px` : '20px'; // Multiply to emphasize time difference visually
     };
 
     const getIconByType = (type: string) => {
@@ -40,7 +38,7 @@ const Timeline = ({ events }: Props) => {
     return (
         <div className="relative flex flex-col items-center justify-center">
             {/* Timeline container */}
-            <div ref={timelineRef} className="w-full max-w-4xl relative">
+            <div className="w-full max-w-4xl relative">
                 {events
                     .sort((a, b) => dayjs(a.startDate).isBefore(dayjs(b.startDate)) ? -1 : 1) // Sort by start date
                     .map((event, index) => {
@@ -65,9 +63,7 @@ const Timeline = ({ events }: Props) => {
                                 <div className={`flex w-full ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
                                     {/* Date */}
                                     <div className={`w-1/2 flex ${index % 2 === 0 ? 'justify-end pr-8' : 'justify-start pl-8'} text-sm font-medium text-gray-600`}>
-                                        {new Date(event.startDate).toLocaleString('en-US', { month: 'long', year: 'numeric' })}
-                                        {event.endDate != "" ? " - " : ""}
-                                        {event.endDate != "" ? new Date(event.endDate).toLocaleString('en-US', { month: 'long', year: 'numeric' }) : ""}
+                                        {getDateRange(event)}
                                     </div>
 
                                     {/* Event Detail */}
@@ -85,5 +81,22 @@ const Timeline = ({ events }: Props) => {
         </div>
     );
 };
+
+function getDateRange(event : Event) : string {
+    if(event.startDate == null || event.endDate == null) {
+        return "";
+    }
+
+    const startDate : string = new Date(event.startDate + 'T00:00:00').toLocaleString('en-US', { month: 'long', year: 'numeric' });
+
+    if(event.endDate == "") {
+        return startDate;
+    } else if(event.endDate == "Present") {
+        return startDate + " - Present";
+    } else {
+        return startDate + " - " + new Date(event.endDate + 'T00:00:00').toLocaleString('en-US', { month: 'long', year: 'numeric' });
+    }
+
+}
 
 export default Timeline;
