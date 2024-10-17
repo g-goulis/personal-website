@@ -10,7 +10,7 @@ const TimelineEvent = ({ event }: Props) => {
 
     return (
         <div
-            className={`relative border border-gray-300 p-4 rounded-lg my-4 max-w-5xl mx-auto shadow-sm hover:shadow-lg transition-shadow duration-200`}
+            className={`relative border-2 bg-indigo-50 border-gray-300 p-4 rounded-lg my-4 max-w-5xl mx-auto shadow-sm hover:shadow-lg transition-shadow duration-200`}
         >
             <div className="flex items-start">
 
@@ -31,7 +31,7 @@ const TimelineEvent = ({ event }: Props) => {
                     <div className="mt-3">
                         <h4 className="text-lg font-medium text-gray-700 mb-1">Key Points:</h4>
                         <ul className="list-disc list-inside text-gray-600">
-                            {event.bullets.map(bullet => (<li>{bullet}</li>))}
+                            {event.bullets.map((bullet, index) => (<li key={index}>{bullet}</li>))}
                         </ul>
                     </div>
                     }

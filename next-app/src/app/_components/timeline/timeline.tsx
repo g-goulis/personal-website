@@ -1,8 +1,8 @@
 "use client";
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useCallback } from 'react';
 import { Event } from "@/interfaces/Event";
 import TimelineEvent from './timeline-event';
-import { FaSuitcase, FaGraduationCap, FaStar, FaProjectDiagram } from "react-icons/fa";
+import { FaSuitcase, FaGraduationCap, FaStar, FaProjectDiagram, FaArrowDown  } from "react-icons/fa";
 import dayjs from 'dayjs';
 
 interface Props {
@@ -10,13 +10,42 @@ interface Props {
 }
 
 const Timeline = ({ events }: Props) => {
+    // Event refs
+    const eventRefs = useRef<(HTMLDivElement | null)[]>([]); // To track the refs of all events
 
-    // Calculate spacing between events based on date difference
+    // This handles the observed element adding or removing the fading class
+    const handleObserver = useCallback((entries: IntersectionObserverEntry[]) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-in'); // Add fade-in class when intersecting
+            } else {
+                entry.target.classList.remove('fade-in'); // Remove it when out of view (optional)
+            }
+        });
+    }, []);
+
+    // Add an observer to identify when we are in the viewport
+    useEffect(() => {
+        const observer = new IntersectionObserver(handleObserver, {
+            threshold: 0.12,
+        });
+
+        eventRefs.current.forEach(eventRef => {
+            if (eventRef) observer.observe(eventRef);
+        });
+
+        return () => {
+            eventRefs.current.forEach(eventRef => {
+                if (eventRef) observer.unobserve(eventRef);
+            });
+        };
+    }, [handleObserver]);
+
     const getEventSpacing = (startDate: string, nextStartDate: string) => {
         const start = dayjs(startDate);
         const next = dayjs(nextStartDate);
         const diffInDays = next.diff(start, 'month');
-        return diffInDays > 0 ? `${diffInDays * 6}px` : '20px'; // Multiply to emphasize time difference visually
+        return diffInDays > 0 ? `${diffInDays * 6}px` : '20px';
     };
 
     const getIconByType = (type: string) => {
@@ -34,13 +63,11 @@ const Timeline = ({ events }: Props) => {
         }
     };
 
-
     return (
         <div className="relative flex flex-col items-center justify-center">
-            {/* Timeline container */}
-            <div className="w-full max-w-4xl relative">
+            <div className="w-full max-w-6xl relative">
                 {events
-                    .sort((a, b) => dayjs(a.startDate).isBefore(dayjs(b.startDate)) ? -1 : 1) // Sort by start date
+                    .sort((a, b) => dayjs(a.startDate).isBefore(dayjs(b.startDate)) ? -1 : 1)
                     .map((event, index) => {
                         const nextEvent = events[index + 1];
                         const spacing = nextEvent ? getEventSpacing(event.startDate, nextEvent.startDate) : '40px';
@@ -49,7 +76,6 @@ const Timeline = ({ events }: Props) => {
                             <div
                                 key={index}
                                 className={`flex w-full mb-8 items-start ${index % 2 === 0 ? 'justify-start' : 'justify-end'} relative`}
-                                data-index={index}
                                 style={{
                                     marginBottom: spacing
                                 }}
@@ -60,10 +86,13 @@ const Timeline = ({ events }: Props) => {
                                 </div>
 
                                 {/* Event Content */}
-                                <div className={`flex w-full ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
+                                <div
+                                    ref={el => { eventRefs.current[index] = el; }}
+                                    className={`flex w-full opacity-0 transition-opacity duration-700 ease-in-out ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'} relative fade-target`} // Only this section will fade in
+                                >
                                     {/* Date */}
                                     <div className={`w-1/2 flex ${index % 2 === 0 ? 'justify-end pr-8' : 'justify-start pl-8'} text-sm font-medium text-gray-600`}>
-                                        {getDateRange(event)}
+                                        {getDateRangeElement(event)}
                                     </div>
 
                                     {/* Event Detail */}
@@ -82,21 +111,27 @@ const Timeline = ({ events }: Props) => {
     );
 };
 
-function getDateRange(event : Event) : string {
-    if(event.startDate == null || event.endDate == null) {
-        return "";
+function getDateRangeElement(event: Event): React.JSX.Element {
+    if (event.startDate == null || event.endDate == null) {
+        return (<></>);
     }
 
-    const startDate : string = new Date(event.startDate + 'T00:00:00').toLocaleString('en-US', { month: 'long', year: 'numeric' });
-
-    if(event.endDate == "") {
-        return startDate;
-    } else if(event.endDate == "Present") {
-        return startDate + " - Present";
+    const startDate: string = new Date(event.startDate + 'T00:00:00').toLocaleString('en-US', { month: 'long', year: 'numeric' });
+    let endDate: string = "";
+    if (event.endDate == "") {
+        return (<p className="pt-2">{startDate}</p>);
+    } else if (event.endDate == "Present") {
+        endDate = "Present";
     } else {
-        return startDate + " - " + new Date(event.endDate + 'T00:00:00').toLocaleString('en-US', { month: 'long', year: 'numeric' });
+        endDate = new Date(event.endDate + 'T00:00:00').toLocaleString('en-US', { month: 'long', year: 'numeric' });
     }
-
+    return (
+        <div className="pt-2 flex flex-col items-center text-center">
+            <p>{startDate}</p>
+            <FaArrowDown className="text-lg"/>
+            <p>{endDate}</p>
+        </div>
+    );
 }
 
 export default Timeline;
