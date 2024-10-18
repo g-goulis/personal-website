@@ -16,7 +16,7 @@ export default function Strengths() {
         <div className="text-center space-y-6">
             <h2 className="text-3xl font-medium">My Strengths</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="shadow-lg p-6 space-y-3 bg-gray-200 bg-opacity-40 rounded-lg border border-gray-250">
+                <div className="shadow-lg p-6 space-y-3 bg-indigo-50 bg-opacity-40 rounded-lg border border-gray-250">
                     <h3 className="font-semibold text-xl">Microservice Architecture</h3>
                     <p className="text-gray-600 text-sm">
                         Deep understanding of managing microservice applications using Spring Boot. Developed multiple tools
@@ -35,7 +35,7 @@ export default function Strengths() {
                     </div>
                 </div>
 
-                <div className="shadow-lg p-6 space-y-3 bg-gray-200 bg-opacity-40 rounded-lg border border-gray-250">
+                <div className="shadow-lg p-6 space-y-3 bg-indigo-50 bg-opacity-40 rounded-lg border border-gray-250">
                     <h3 className="font-semibold text-xl">Backend Development</h3>
                     <p className="text-gray-600 text-sm">
                         Extensive experience working with REST APIs, managing the flow of data between backend systems,
@@ -60,7 +60,7 @@ export default function Strengths() {
                     </div>
                 </div>
 
-                <div className="shadow-lg p-6 space-y-3 bg-gray-200 bg-opacity-40 rounded-lg border border-gray-250">
+                <div className="shadow-lg p-6 space-y-3 bg-indigo-50 bg-opacity-40 rounded-lg border border-gray-250">
                     <h3 className="font-semibold text-xl">Frontend Development</h3>
                     <p className="text-gray-600 text-sm">
                         Developed real-time applications using web sockets and extended functionality with JavaScript
