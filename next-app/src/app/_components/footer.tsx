@@ -25,6 +25,7 @@ export function Footer() {
                     </button>
                 </a>
             </div>
+            <p className={"text-xs"}>Gabriel Goulis All rights reserved ©</p>
         </div>
   );
 }

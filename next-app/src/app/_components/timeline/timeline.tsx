@@ -2,7 +2,7 @@
 import React, { useRef, useEffect, useCallback } from 'react';
 import { Event } from "@/interfaces/Event";
 import TimelineEvent from './timeline-event';
-import { FaSuitcase, FaGraduationCap, FaStar, FaProjectDiagram, FaArrowDown  } from "react-icons/fa";
+import { FaSuitcase, FaGraduationCap, FaStar, FaProjectDiagram, FaArrowUp  } from "react-icons/fa";
 import dayjs from 'dayjs';
 
 interface Props {
@@ -67,7 +67,7 @@ const Timeline = ({ events }: Props) => {
         <div className="relative flex flex-col items-center justify-center">
             <div className="w-full max-w-6xl relative">
                 {events
-                    .sort((a, b) => dayjs(a.startDate).isBefore(dayjs(b.startDate)) ? -1 : 1)
+                    .sort((a, b) => dayjs(a.startDate).isAfter(dayjs(b.startDate)) ? -1 : 1)
                     .map((event, index) => {
                         const nextEvent = events[index + 1];
                         const spacing = nextEvent ? getEventSpacing(event.startDate, nextEvent.startDate) : '40px';
@@ -127,9 +127,9 @@ function getDateRangeElement(event: Event): React.JSX.Element {
     }
     return (
         <div className="pt-2 flex flex-col items-center text-center">
-            <p>{startDate}</p>
-            <FaArrowDown className="text-lg"/>
             <p>{endDate}</p>
+            <FaArrowUp className="text-lg"/>
+            <p>{startDate}</p>
         </div>
     );
 }
