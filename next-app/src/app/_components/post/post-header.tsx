@@ -1,7 +1,6 @@
-import CoverImage from "./cover-image";
 import DateFormatter from "../date-formatter";
-import { PostTitle } from "@/app/_components/post/post-title";
-import Image from "next/image";
+import {format, parseISO} from "date-fns";
+import {useEffect} from "react";
 
 type Props = {
   title: string;
@@ -9,23 +8,16 @@ type Props = {
   date: string;
 };
 
-export function PostHeader({ title, coverImage, date }: Props) {
-  return (
+export function PostHeader({ title, date }: Props) {
+    const formattedDate = format(parseISO(date), "LLLL	d, yyyy");
+
+    return (
     <div>
-      <PostTitle>{title}</PostTitle>
-      <div className="mb-8 md:mb-16">
-        <Image title={title} src={coverImage}
-             alt={`Cover Image for ${title}`}
-             className={"shadow-sm w-full object-cover opacity-80"}
-             width={1300}
-             height={630}
-             priority
-        />
-      </div>
+      <h1 className={"font-montserrat font-bold text-7xl"}>{title}</h1>
       <div className="max-w-2xl mx-auto">
-        <div className="mb-6 text-lg divider">
-          <DateFormatter dateString={date} />
-        </div>
+          <div className="mb-6 text-lg divider">
+              {formattedDate}
+          </div>
       </div>
     </div>
   );
