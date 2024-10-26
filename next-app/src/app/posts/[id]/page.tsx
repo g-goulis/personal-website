@@ -1,30 +1,66 @@
 import { notFound } from "next/navigation";
-import {getPostByID} from "@/lib/api";
-import markdownToHtml from "@/lib/markdownToHtml";
 import { PostBody } from "@/app/_components/post/post-body";
 import { PostHeader } from "@/app/_components/post/post-header";
 import {PostContainer} from "@/app/_components/post/post-container";
+import path from "node:path";
+import fs from "fs";
+import matter from "gray-matter";
+import {marked} from "marked";
+import {getPostDirectories} from "@/lib/api";
 
-export default async function Post({params}: { params: { id: string } }) {
-  const post = getPostByID(params.id);
+interface Frontmatter {
+  title: string;
+  excerpt: string;
+  coverImage: string;
+  date: string;
+}
 
+interface PostData {
+  frontmatter: Frontmatter;
+  htmlContent: string;
+}
+
+export function generateStaticParams(): string[] {
+  return getPostDirectories();
+}
+
+async function getPostData(id: string) : Promise<PostData | null>  {
+  const filePath = path.join('_posts', `${id}.md`);
+
+  if (!fs.existsSync(filePath)) {
+    return null;
+  }
+
+  const markdownWithMeta = fs.readFileSync(filePath, 'utf-8');
+  const { data: frontmatter, content } = matter(markdownWithMeta);
+  const htmlContent = await marked(content);
+  return { frontmatter: frontmatter as Frontmatter, htmlContent };
+}
+
+
+export default async function Post({ params }: { params: { id: string } }) {
+  // console.log(params.id);
+  const data  = await getPostData(params.id);
+  // console.log(data);
   // Guard condition for posts not found
-  if (!post) {
+  if (!data) {
     return notFound();
   }
 
-  const content: String = await markdownToHtml(post.content || "");
+  const { frontmatter, htmlContent } = data;
+
+  // const content: String = await markdownToHtml(data.content || "");
 
   return (
       <div className={"text-center"}>
         <PostContainer>
           <article className="justify-items-center align-middle">
             <PostHeader
-                title={post.title}
-                coverImage={post.coverImage}
-                date={post.date}
+                title={frontmatter.title}
+                coverImage={frontmatter.coverImage}
+                date={frontmatter.date}
             />
-            <PostBody content={content}/>
+            <PostBody content={htmlContent}/>
           </article>
         </PostContainer>
       </div>

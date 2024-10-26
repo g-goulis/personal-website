@@ -1,7 +1,6 @@
-import { remark } from "remark";
-import html from "remark-html";
+import { marked } from 'marked';
 
 export default async function markdownToHtml(markdown: string): Promise<String> {
-  const result = await remark().use(html).process(markdown);
-  return result.toString();
+  const htmlContent = marked(markdown);
+  return htmlContent;
 }
