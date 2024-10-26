@@ -1,6 +1,4 @@
-import DateFormatter from "../date-formatter";
 import {format, parseISO} from "date-fns";
-import {useEffect} from "react";
 
 type Props = {
   title: string;
