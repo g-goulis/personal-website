@@ -2,25 +2,24 @@ import {Post} from "@/interfaces/post";
 import Link from "next/link";
 
 interface Props {
-    preview: Post
+    post: Post
 }
 
-export function PostPreview({ preview }: Props) {
-
+export function PostPreview({ post }: Props) {
     return (
-        <Link href={`/posts/${preview.slug}`}>
-            <div key={preview.slug} className={"card w-80 shadow-xl hover:scale-105 transition-transform duration-200"}>
+        <Link href={`/posts/${post.id}`}>
+            <div key={post.id} className={"card w-80 shadow-xl hover:scale-105 transition-transform duration-200"}>
                 <figure>
                     <img
-                        src={preview.coverImage}
-                        alt={preview.title}
+                        src={post.coverImage}
+                        alt={post.title}
                     />
                 </figure>
 
                 <div className="card-body">
-                    <h2 className="text-black font-semibold card-title">{preview.title}</h2>
-                    <p className="mb-4" >{preview.excerpt.split(" ").slice(0, 20).join(" ")}...</p>
-                    <p className="text-sm">{new Date(preview.date).toLocaleDateString()}</p>
+                    <h2 className="text-black font-semibold card-title">{post.title}</h2>
+                    <p className="mb-4" >{post.excerpt.split(" ").slice(0, 20).join(" ")}...</p>
+                    <p className="text-sm">{new Date(post.date).toLocaleDateString()}</p>
                     {/*<div>*/}
                     {/*    <div className="badge text-gray-600 bg-red-400 border-0">default</div>*/}
                     {/*</div>*/}

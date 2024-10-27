@@ -1,7 +1,7 @@
 ---
 title: "My First Post"
 excerpt: "Welcome to my blog! This is my first post where I will introduce why I have created this website and what to expect!"
-coverImage: "/assets/blog/first-post/cover.png"
+coverImage: "_posts/first-post/cover.png"
 date: "2024-09-19"
 ---
 

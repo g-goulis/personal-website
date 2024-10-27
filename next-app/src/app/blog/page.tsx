@@ -1,9 +1,10 @@
 import Banner from "@/app/_components/banner";
-import {PostPreviewList} from "@/app/_components/post-preview/post-preview-list";
+import PostPreviewList from "@/app/_components/post-preview/post-preview-list";
+import {getAllPosts} from "@/lib/post-api";
 
 
 export default function Index() {
-
+    const posts = getAllPosts();
 
     return (
           <div>
@@ -19,7 +20,7 @@ export default function Index() {
                   </div>
               </div>
               <div className="relative pt-16">
-                  <PostPreviewList />
+                  <PostPreviewList posts={posts}/>
               </div>
           </div>
 
