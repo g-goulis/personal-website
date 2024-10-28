@@ -30,9 +30,9 @@ export function PostBody({ content }: Props) {
             }
 
             return (
-            <pre className={className} {...props}>
+            <div className={className}>
                 <code>{children}</code>
-            </pre>
+            </div>
             );
         }),
     };

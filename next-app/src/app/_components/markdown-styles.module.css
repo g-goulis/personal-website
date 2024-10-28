@@ -42,12 +42,8 @@
   @apply bg-gray-800 text-white p-4 rounded-lg overflow-x-auto my-6;
 }
 
-.markdown code {
+.markdown div code {
   @apply bg-gray-800 text-red-600 px-1.5 py-0.5 rounded;
-}
-
-.markdown mermaid {
-  @apply bg-red-400 text-red-600 px-1.5 py-0.5 rounded;
 }
 
 .markdown pre code {
