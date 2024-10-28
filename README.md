@@ -18,7 +18,7 @@ Features
 1. Clone the Repository
 
 
-    git clone https://github.com/your-username/your-repo.git
+    git clone https://github.com/g-goulis/personal-website.git
     cd your-repo
 
 2. Install Dependencies
