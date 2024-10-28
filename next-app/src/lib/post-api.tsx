@@ -21,9 +21,16 @@ export function getPostByID(id: string): Post | null {
 
   const markdownWithMeta = fs.readFileSync(filePath, 'utf-8');
   const { data: data, content } = matter(markdownWithMeta);
-  const htmlContent =  marked(content);
+  // const renderer = new marked.Renderer();
+  // renderer.code = ({ text, lang }: { text: string; lang: string }) => {
+  //   if (lang === 'mermaid') {
+  //     return `<div class="mermaid">${text}</div>`;
+  //   }
+  //   return `<pre><code class="language-${lang}">${text}</code></pre>`;
+  // };
+  // const htmlContent =  marked(content, {renderer});
 
-  return { ...data, id: id, content: htmlContent} as Post;
+  return { ...data, id: id, content: content} as Post;
 
 }
 

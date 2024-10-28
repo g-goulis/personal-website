@@ -22,7 +22,7 @@ export default async function Post({ params }: Params) {
   // const content: String = await markdownToHtml(data.content || "");
 
   return (
-      <div className={"mx-10 text-center"}>
+      <div className={"mx-10"}>
           <article className="justify-items-center align-middle">
             <PostHeader
                 title={data.title}

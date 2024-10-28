@@ -10,7 +10,7 @@ export function PostHeader({ title, date }: Props) {
     const formattedDate = format(parseISO(date), "LLLL	d, yyyy");
 
     return (
-    <div>
+    <div className={"text-center"}>
       <h1 className={"font-montserrat font-bold text-7xl"}>{title}</h1>
       <div className="max-w-2xl mx-auto">
           <div className="mb-6 text-lg divider">

@@ -1,11 +1,8 @@
 .markdown {
-  @apply text-lg leading-relaxed;
+  @apply text-lg leading-relaxed font-montserrat;
 }
 
-.markdown {
-  @apply font-montserrat;
-}
-
+/* Paragraphs and Common Elements */
 .markdown p,
 .markdown ul,
 .markdown ol,
@@ -13,14 +10,108 @@
   @apply my-6;
 }
 
+/* Headings */
 .markdown h1 {
-  @apply text-3xl font-semibold mt-12 mb-4 leading-snug;
+  @apply text-4xl font-bold mt-12 mb-6 leading-tight;
 }
 
 .markdown h2 {
-  @apply text-3xl mt-12 mb-4 leading-snug;
+  @apply text-3xl font-semibold mt-10 mb-5 leading-snug;
 }
 
 .markdown h3 {
-  @apply text-2xl mt-8 mb-4 leading-snug;
+  @apply text-2xl font-semibold mt-8 mb-4 leading-snug;
+}
+
+.markdown h4 {
+  @apply text-xl font-medium mt-6 mb-3;
+}
+
+/* Links */
+.markdown a {
+  @apply text-blue-500 hover:underline;
+}
+
+/* Blockquotes */
+.markdown blockquote {
+  @apply border-l-4 border-gray-300 pl-4 italic text-gray-700 bg-gray-100 py-2 px-4 rounded-md;
+}
+
+/* Code Blocks */
+.markdown pre {
+  @apply bg-gray-800 text-white p-4 rounded-lg overflow-x-auto my-6;
+}
+
+.markdown code {
+  @apply bg-gray-800 text-red-600 px-1.5 py-0.5 rounded;
+}
+
+.markdown mermaid {
+  @apply bg-red-400 text-red-600 px-1.5 py-0.5 rounded;
+}
+
+.markdown pre code {
+  @apply bg-transparent text-white;
+}
+
+/* Inline Code */
+.markdown p code,
+.markdown li code {
+  @apply bg-gray-100 text-red-600 px-1 rounded;
+}
+
+/* Lists */
+.markdown ul {
+  @apply list-disc pl-6 my-6;
+}
+
+.markdown ol {
+  @apply list-decimal pl-6 my-6;
+}
+
+.markdown li {
+  @apply mb-2;
+}
+
+/* Tables */
+.markdown table {
+  @apply w-full border-collapse overflow-hidden my-6 rounded-lg;
+}
+
+.markdown th,
+.markdown td {
+  @apply border border-gray-300 px-4 py-3 text-left;
+}
+
+.markdown th {
+  @apply bg-gray-100 font-semibold text-gray-700;
+}
+
+.markdown td {
+  @apply text-gray-800;
+}
+
+/* Horizontal Rules */
+.markdown hr {
+  @apply border-t border-gray-300 my-8;
+}
+
+/* Images */
+.markdown img {
+  @apply w-full h-auto rounded-lg my-4;
+  max-height: 500px; /* Optional: restrict image height */
+}
+
+/* Mermaid Diagrams (Optional) */
+.markdown .mermaid {
+  @apply bg-gray-100 rounded-lg p-4 overflow-x-auto;
+}
+
+/* Styling for Text Emphasis */
+.markdown strong {
+  @apply font-semibold text-gray-900;
+}
+
+.markdown em {
+  @apply italic;
 }
